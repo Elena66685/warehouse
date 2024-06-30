@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.warehouse.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.warehouse.HelloController">
+   <children>
+      <TableView layoutX="3.0" layoutY="27.0" prefHeight="370.0" prefWidth="800.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="40.79998779296875" text="id" />
+          <TableColumn fx:id="name" prefWidth="212.80002975463867" text="ФИО" />
+            <TableColumn fx:id="pack" prefWidth="113.5999755859375" text="ВЕЩЬ" />
+            <TableColumn fx:id="count" prefWidth="87.20001220703125" text="КОЛИЧЕСТВО" />
+            <TableColumn fx:id="minus" prefWidth="112.00006103515625" text="ВЕЩЬ ВЗЯТА" />
+            <TableColumn fx:id="plus" prefWidth="129.60003662109375" text="ВЕЩЬ ВОЗВРАЩЕНА" />
+            <TableColumn fx:id="status" prefWidth="106.39996337890625" text="СТАТУС" />
+        </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="60.0" layoutY="494.0" mnemonicParsing="false" onAction="#newWindow1" prefHeight="26.0" prefWidth="108.0" text="Добавить" />
+   </children>
+</AnchorPane>

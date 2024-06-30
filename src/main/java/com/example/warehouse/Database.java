@@ -5,8 +5,7 @@ import java.sql.*;
 
 public class Database {
 
-    //public Connection basedb = getDBConnection();
-    //String.valueOf(FileSystems.getDefault().getPath("").toAbsolutePath()) +
+    public Connection dbConnection = getDBConnection();
 
     public Connection getDBConnection() throws RuntimeException {
         Connection db;
@@ -19,5 +18,63 @@ public class Database {
         }
         System.out.println("База подключена!");
         return db;
+    }
+
+    public  void createDB()
+    {
+        PreparedStatement pstmt;
+        try {
+            pstmt = dbConnection.prepareStatement("CREATE TABLE IF NOT EXISTS" +
+                    "'department'(id integer primary key autoincrement," +
+                    "name text not null);");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("таблица создана");
+    }
+
+    public void inserting_department(String name) throws SQLException {
+        PreparedStatement pstmt = null;
+        pstmt = dbConnection.prepareStatement("INSERT INTO department (name) values ('"+name+"');");
+        pstmt.executeUpdate();
+    }
+
+    public void getDepartment() throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT * FROM department");
+        ResultSet resultSet = stmt.executeQuery();
+
+        while (resultSet.next()) {
+            System.out.println(resultSet.getInt(1));
+            System.out.println(resultSet.getString(2));
+        }
+    }
+
+    public  void createDBemployee()
+    {
+        PreparedStatement pstmt;
+        try {
+            pstmt = dbConnection.prepareStatement("CREATE TABLE IF NOT EXISTS" +
+                    "'employee'(id integer primary key autoincrement," +
+                    "name text not null," +
+                    "data text not null," +
+                    "department_id integer not null, foreign key(department_id) references department(id));");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("таблица создана");
+    }
+    public void singUpUser(String name, String data, Integer department_id) throws SQLException {
+        PreparedStatement pstmt = dbConnection.prepareStatement("INSERT INTO employee (name, data, department_id) values ('"+name+"', '"+data+"', "+department_id+");");
+        pstmt.executeUpdate();
     }
 }
