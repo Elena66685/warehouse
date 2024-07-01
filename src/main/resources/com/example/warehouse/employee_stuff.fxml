@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.warehouse.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.warehouse.EmployeeStuffController">
    <children>
       <TableView layoutX="3.0" layoutY="27.0" prefHeight="370.0" prefWidth="800.0">
         <columns>
@@ -18,6 +18,6 @@
             <TableColumn fx:id="status" prefWidth="106.39996337890625" text="СТАТУС" />
         </columns>
       </TableView>
-      <Button fx:id="add" layoutX="60.0" layoutY="494.0" mnemonicParsing="false" onAction="#newWindow1" prefHeight="26.0" prefWidth="108.0" text="Добавить" />
+      <Button fx:id="add" layoutX="60.0" layoutY="494.0" mnemonicParsing="false" onAction="#OpenEmployeeWindow" prefHeight="26.0" prefWidth="108.0" text="Добавить" />
    </children>
 </AnchorPane>

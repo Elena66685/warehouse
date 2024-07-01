@@ -11,6 +11,6 @@
       <TextField fx:id="name" layoutX="106.0" layoutY="74.0" prefHeight="35.0" prefWidth="330.0" promptText="ФИО" />
       <TextField fx:id="data" layoutX="75.0" layoutY="204.0" prefHeight="35.0" prefWidth="163.0" promptText="чч.мм.гггг" />
       <ComboBox fx:id="department" layoutX="332.0" layoutY="200.0" prefHeight="35.0" prefWidth="150.0" promptText="отдел" />
-      <Button fx:id="backBtn" layoutX="245.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Назад" />
+      <Button fx:id="backBtn" layoutX="274.0" layoutY="348.0" mnemonicParsing="false" onAction="#OpenEmployeeWindow" prefHeight="26.0" prefWidth="106.0" text="Назад" />
    </children>
 </AnchorPane>

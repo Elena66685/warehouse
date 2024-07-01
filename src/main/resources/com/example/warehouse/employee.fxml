@@ -10,10 +10,10 @@
    <children>
       <TableView layoutX="3.0" layoutY="31.0" prefHeight="210.0" prefWidth="594.0">
         <columns>
-          <TableColumn prefWidth="52.0" text="C1" />
-          <TableColumn prefWidth="283.20001220703125" text="C2" />
-            <TableColumn prefWidth="124.79998779296875" text="Column X" />
-            <TableColumn prefWidth="131.9998779296875" text="Column X" />
+          <TableColumn fx:id="id" prefWidth="52.0" text="id" />
+          <TableColumn fx:id="name" prefWidth="283.20001220703125" text="ФИО" />
+            <TableColumn fx:id="data" prefWidth="124.79998779296875" text="Дата рождения" />
+            <TableColumn fx:id="department" prefWidth="131.9998779296875" text="Отдел" />
         </columns>
       </TableView>
       <Button fx:id="add" layoutX="40.0" layoutY="343.0" mnemonicParsing="false" onAction="#newWindow2" text="Добавить" />

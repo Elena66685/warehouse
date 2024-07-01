@@ -4,13 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloController {
+public class EmployeeStuffController {
 
     @FXML
     private Button add;
@@ -36,8 +35,8 @@ public class HelloController {
     @FXML
     private TableColumn<?, ?> status;
 
-    public void newWindow1() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("employee.fxml"));
+    public void OpenEmployeeWindow() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employee.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage)add.getScene().getWindow();
         stage.setTitle("СОТРУДНИКИ");
