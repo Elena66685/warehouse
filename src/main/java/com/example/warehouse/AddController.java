@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 
 public class AddController {
+
+    Database database = new Database();
     @FXML
     public Button send;
 
@@ -20,17 +22,13 @@ public class AddController {
     private TextField name;
 
     @FXML
-    void initialize() {
-        Database database = new Database();
+    void initialize()
+    {
 
-        send.setOnAction(event -> {
-            try {
-                database.singUpUser(name.getText(), data.getText(), Integer.valueOf(department.getText()));
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    }
 
+    public void sendData() throws SQLException {
+        database.singUpUser(name.getText(), data.getText(), Integer.valueOf(department.getText()));
 
     }
 }
