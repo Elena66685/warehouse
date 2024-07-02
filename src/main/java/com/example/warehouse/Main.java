@@ -26,5 +26,6 @@ public class Main extends Application {
         //bs.inserting_department("ИТ");
         //bs.getDepartment();
         //bs.createDBemployee();
+        //bs.setEmployee();
     }
 }

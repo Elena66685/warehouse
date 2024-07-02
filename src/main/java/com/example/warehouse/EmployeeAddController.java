@@ -41,7 +41,8 @@ public class EmployeeAddController {
     }
 
     public void sendData() throws SQLException, IOException {
-        database.singUpUser(name.getText(), data.getText(), department.getValue());
+        int index = department.getSelectionModel().getSelectedIndex() + 1;
+        database.singUpUser(name.getText(), data.getText(), index);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Сообщение");
         alert.setContentText("Сотрудник успешно добавлен!");
