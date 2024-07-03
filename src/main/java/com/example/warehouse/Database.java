@@ -27,7 +27,7 @@ public class Database {
         try {
             pstmt = dbConnection.prepareStatement("CREATE TABLE IF NOT EXISTS" +
                     "'department'(id integer primary key autoincrement," +
-                    "name text not null);");
+                    "department text not null);");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -41,7 +41,7 @@ public class Database {
 
     public void inserting_department(String name) throws SQLException {
         PreparedStatement pstmt = null;
-        pstmt = dbConnection.prepareStatement("INSERT INTO department (name) values ('"+name+"');");
+        pstmt = dbConnection.prepareStatement("INSERT INTO department (department) values ('"+name+"');");
         pstmt.executeUpdate();
     }
 
@@ -64,6 +64,7 @@ public class Database {
                     "name text not null," +
                     "data text not null," +
                     "department_id integer not null, foreign key(department_id) references department(id));");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -81,12 +82,13 @@ public class Database {
     }
 
     public ResultSet getEmployee() throws SQLException {
-        PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee.id, employee.name, employee.data, department.name FROM employee, department WHERE employee.department_id = department.id;");
+        //PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee.id, employee.name, employee.data, department.name FROM employee, department WHERE employee.department_id = department.id;");
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee.id, employee.name, employee.data, department.department FROM employee, department WHERE employee.department_id = department.id;");
 
         ResultSet resultSet = stmt.executeQuery();
         return resultSet;
 
-       /*hile (resultSet.next())
+       /*While (resultSet.next())
         {
             System.out.println(resultSet.getInt (1));
             System.out.println(resultSet.getString (2));
@@ -95,3 +97,4 @@ public class Database {
         }*/
     }
 }
+

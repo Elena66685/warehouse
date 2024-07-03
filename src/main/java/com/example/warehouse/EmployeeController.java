@@ -1,5 +1,6 @@
 package com.example.warehouse;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeeController {
+
+
+    ObservableList<User> list = FXCollections.observableArrayList();
 
     Database database = new Database();
     @FXML
@@ -54,18 +58,14 @@ public class EmployeeController {
         ResultSet resultSet = database.getEmployee();
         while (resultSet.next())
         {
-            User fd = new User(resultSet.getInt("id"), resultSet.getString ("name"), resultSet.getString ("data"), resultSet.getString ("department"));
-            //resultSet.getInt("id");
-            //resultSet.getString ("name");
-           // resultSet.getString ("data");
-            //resultSet.getString ("department");
+            list.add(new User(resultSet.getInt("id"), resultSet.getString ("name"), resultSet.getString ("data"), resultSet.getString ("department")));
         }
         id.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         name.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
         data.setCellValueFactory(new PropertyValueFactory<User, String>("data"));
         department.setCellValueFactory(new PropertyValueFactory<User, String>("department"));
 
-        //tableUser.setItems(resultSet.getInt(id));
+        tableUser.setItems(list);
 
     }
 }
