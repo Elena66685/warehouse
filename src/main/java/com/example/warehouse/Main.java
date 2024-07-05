@@ -27,5 +27,16 @@ public class Main extends Application {
         //bs.getDepartment();
         //bs.createDBemployee();
         //bs.setEmployee();
+        //bs.createType();
+        //bs.inserting_type("Инструменты");
+        //bs.getType();
+        //bs.createStuff();
+        //bs.singUpStuff("Ручка гелиевая", "0.6", 1003, 1);
+        //bs.createStatus();
+        //bs.inserting_status("Потеряна");
+        //bs.getStatus();
+
+
+
     }
 }

@@ -18,6 +18,7 @@
             <TableColumn fx:id="status" prefWidth="106.39996337890625" text="СТАТУС" />
         </columns>
       </TableView>
-      <Button fx:id="add" layoutX="60.0" layoutY="494.0" mnemonicParsing="false" onAction="#OpenEmployeeWindow" prefHeight="26.0" prefWidth="108.0" text="Добавить" />
+      <Button fx:id="add" layoutX="26.0" layoutY="494.0" mnemonicParsing="false" onAction="#OpenEmployeeWindow" prefHeight="26.0" prefWidth="142.0" text=" Добавить сотрудника" />
+      <Button fx:id="addstuff" layoutX="201.0" layoutY="495.0" mnemonicParsing="false" onAction="#OpenStuffWindow" prefHeight="26.0" prefWidth="123.0" text="Добавить вещь" />
    </children>
 </AnchorPane>

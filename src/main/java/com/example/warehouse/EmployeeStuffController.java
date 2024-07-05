@@ -15,6 +15,9 @@ public class EmployeeStuffController {
     private Button add;
 
     @FXML
+    private Button addstuff;
+
+    @FXML
     private TableColumn<?, ?> count;
 
     @FXML
@@ -40,6 +43,15 @@ public class EmployeeStuffController {
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage)add.getScene().getWindow();
         stage.setTitle("СОТРУДНИКИ");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void OpenStuffWindow() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("stuff.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage)addstuff.getScene().getWindow();
+        stage.setTitle("ВЕЩИ");
         stage.setScene(scene);
         stage.show();
     }

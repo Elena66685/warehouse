@@ -25,6 +25,9 @@ public class EmployeeController {
     public Button add;
 
     @FXML
+    private Button back;
+
+    @FXML
     private TableColumn<User, String> data;
 
     @FXML
@@ -58,7 +61,8 @@ public class EmployeeController {
         ResultSet resultSet = database.getEmployee();
         while (resultSet.next())
         {
-            list.add(new User(resultSet.getInt("id"), resultSet.getString ("name"), resultSet.getString ("data"), resultSet.getString ("department")));
+            list.add(new User(resultSet.getInt("id"), resultSet.getString ("name"),
+                              resultSet.getString ("data"), resultSet.getString ("department")));
         }
         id.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
         name.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
@@ -66,7 +70,15 @@ public class EmployeeController {
         department.setCellValueFactory(new PropertyValueFactory<User, String>("department"));
 
         tableUser.setItems(list);
+    }
 
+    public void OpenEmployeeWindow() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employee_stuff.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage)back.getScene().getWindow();
+        stage.setTitle("СОТРУДНИК_ВЕЩЬ");
+        stage.setScene(scene);
+        stage.show();
     }
 }
 
