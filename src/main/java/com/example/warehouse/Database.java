@@ -206,5 +206,28 @@ public class Database {
             System.out.println(resultSet.getString(2));
         }
     }
+
+    public  void createEmployeeStuff() throws RuntimeException {
+        PreparedStatement pstmt;
+        try {
+            pstmt = dbConnection.prepareStatement("CREATE TABLE IF NOT EXISTS" +
+                    "'employee_stuff'(id integer primary key autoincrement," +
+                    "name_employee_id integer not null, foreign key(name_employee_id) references employee(id)," +
+                    "name_stuff_id integer not null, foreign key(name_stuff_id) references stuff(id)," +
+                    "count integer not null," +
+                    "data text not null," +
+                    "data_refund text," +
+                    "name_status_id integer not null, foreign key(name_status_id) references status(id));");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("таблица создана");
+    }
 }
 

@@ -19,8 +19,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws SQLException {
-        launch();
-        //Database bs = new Database();
+        //launch();
+        Database bs = new Database();
         //Connection dbConnection = bs.getDBConnection();
         //bs.createDB();
         //bs.inserting_department("ИТ");
@@ -35,6 +35,7 @@ public class Main extends Application {
         //bs.createStatus();
         //bs.inserting_status("Потеряна");
         //bs.getStatus();
+        bs.createEmployeeStuff();
 
 
 
