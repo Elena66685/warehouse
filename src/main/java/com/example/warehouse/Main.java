@@ -35,7 +35,9 @@ public class Main extends Application {
         //bs.createStatus();
         //bs.inserting_status("Потеряна");
         //bs.getStatus();
-        bs.createEmployeeStuff();
+        //bs.createEmployeeStuff();
+        //bs.singUpEmployeeStuff(2, 3, 2,"22.06.2024", "Null", 3 );
+        //bs.getEmployeeStuff();
 
 
 

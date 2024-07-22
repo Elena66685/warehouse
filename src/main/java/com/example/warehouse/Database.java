@@ -212,12 +212,15 @@ public class Database {
         try {
             pstmt = dbConnection.prepareStatement("CREATE TABLE IF NOT EXISTS" +
                     "'employee_stuff'(id integer primary key autoincrement," +
-                    "name_employee_id integer not null, foreign key(name_employee_id) references employee(id)," +
-                    "name_stuff_id integer not null, foreign key(name_stuff_id) references stuff(id)," +
+                    "name_employee_id integer not null," +
+                    "name_stuff_id integer not null," +
                     "count integer not null," +
                     "data text not null," +
                     "data_refund text," +
-                    "name_status_id integer not null, foreign key(name_status_id) references status(id));");
+                    "name_status_id integer not null," +
+                    "foreign key(name_status_id) references status(id)," +
+                    "foreign key(name_employee_id) references employee(id)," +
+                    "foreign key(name_stuff_id) references stuff(id));");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -229,5 +232,28 @@ public class Database {
         }
         System.out.println("таблица создана");
     }
-}
 
+    public void singUpEmployeeStuff(Integer name_employee_id, Integer name_stuff_id, Integer count, String data, String data_refund, Integer name_status_id) throws SQLException {
+
+        PreparedStatement pstmt = dbConnection.prepareStatement("INSERT INTO employee_stuff (name_employee_id, name_stuff_id, count, data, data_refund, name_status_id) values ('"+name_employee_id+"', '"+name_stuff_id+"', '"+count+"', '"+data+"', '"+data_refund+"', '"+name_status_id+"');");
+        pstmt.executeUpdate();
+    }
+
+    public void getEmployeeStuff() throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee_stuff.id, employee.name, stuff.name AS names, employee_stuff.count, employee_stuff.data, employee_stuff.data_refund, status.name AS sname FROM employee_stuff INNER JOIN employee ON employee_stuff.name_employee_id = employee.id INNER JOIN stuff ON employee_stuff.name_stuff_id = stuff.id INNER JOIN status ON employee_stuff.name_status_id = status.id;");
+
+        ResultSet resultSet = stmt.executeQuery();
+
+        while (resultSet.next())
+        {
+            System.out.println(resultSet.getInt (1));
+            System.out.println(resultSet.getString (2));
+            System.out.println(resultSet.getString (3));
+            System.out.println(resultSet.getInt (4));
+            System.out.println(resultSet.getString (5));
+            System.out.println(resultSet.getString (6));
+            System.out.println(resultSet.getString (7));
+
+        }
+    }
+}
