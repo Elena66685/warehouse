@@ -2,7 +2,6 @@ package com.example.warehouse;
 
 import java.nio.file.FileSystems;
 import java.sql.*;
-import java.util.Objects;
 
 public class Database {
 
@@ -239,12 +238,12 @@ public class Database {
         pstmt.executeUpdate();
     }
 
-    public void getEmployeeStuff() throws SQLException {
+    public ResultSet getEmployeeStuff() throws SQLException {
         PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee_stuff.id, employee.name, stuff.name AS names, employee_stuff.count, employee_stuff.data, employee_stuff.data_refund, status.name AS sname FROM employee_stuff INNER JOIN employee ON employee_stuff.name_employee_id = employee.id INNER JOIN stuff ON employee_stuff.name_stuff_id = stuff.id INNER JOIN status ON employee_stuff.name_status_id = status.id;");
 
         ResultSet resultSet = stmt.executeQuery();
 
-        while (resultSet.next())
+        /*while (resultSet.next())
         {
             System.out.println(resultSet.getInt (1));
             System.out.println(resultSet.getString (2));
@@ -254,6 +253,7 @@ public class Database {
             System.out.println(resultSet.getString (6));
             System.out.println(resultSet.getString (7));
 
-        }
+        }*/
+        return resultSet;
     }
 }
