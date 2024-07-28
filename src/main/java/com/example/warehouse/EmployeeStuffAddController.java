@@ -23,6 +23,10 @@ public class EmployeeStuffAddController {
     ObservableList<String> strings = FXCollections.observableArrayList();
     ObservableList<String> str = FXCollections.observableArrayList();
 
+    int number = 0;
+    int index_stuff;
+    int num;
+
     @FXML
     private Button back;
 
@@ -84,13 +88,32 @@ public class EmployeeStuffAddController {
 
     public void sendEmployeeStuffAdd() throws SQLException, IOException {
         int index = user.getSelectionModel().getSelectedIndex() + 1;
-        int index_stuff = stuff.getSelectionModel().getSelectedIndex() + 1;
+        index_stuff = stuff.getSelectionModel().getSelectedIndex() + 1;
+        ResultSet resultSet = database.getStuffNumber(index_stuff);
         int index_status = status.getSelectionModel().getSelectedIndex() + 1;
-        database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), minus.getText(), plus.getText(), index_status);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Сообщение");
-        alert.setContentText("Запись успешно добавлена!");
-        alert.showAndWait();
+        while (resultSet.next())
+        {
+            number = resultSet.getInt("number");
+        }
+        if(number - Integer.valueOf(count.getText()) >= 0) {
+            database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), minus.getText(), plus.getText(), index_status);
+            num = number - Integer.valueOf(count.getText());
+            database.updateStuffNumber(index_stuff, num);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Запись успешно добавлена!");
+            alert.showAndWait();
+            //num = number - Integer.valueOf(count.getText());
+            //database.updateStuffNumber(index_stuff, num);
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Нет в наличии!");
+            alert.showAndWait();
+
+        }
         OpenEmployeeStuffWindow();
     }
 

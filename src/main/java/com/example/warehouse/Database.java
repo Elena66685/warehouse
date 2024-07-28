@@ -277,4 +277,17 @@ public class Database {
         ResultSet resultSet = stmt.executeQuery();
         return resultSet;
     }
+
+    public ResultSet getStuffNumber(int index_stuff) throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT stuff.number FROM stuff WHERE stuff.id = '"+index_stuff+"';");
+
+        ResultSet resultSet = stmt.executeQuery();
+        return resultSet;
+    }
+
+    public void updateStuffNumber(int index_stuff, int num) throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("UPDATE stuff SET number = '"+num+"' WHERE id = '"+index_stuff+"';");
+        stmt.executeUpdate();
+
+    }
 }
