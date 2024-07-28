@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +20,9 @@ public class EmployeeStuffController {
     Database database = new Database();
 
     ObservableList<Stuffuser> lists = FXCollections.observableArrayList();
+
+    @FXML
+    private Button appand;
 
     @FXML
     private Button add;
@@ -50,6 +54,11 @@ public class EmployeeStuffController {
     @FXML
     private TableView<Stuffuser> table;
 
+    @FXML
+    void initialize() throws SQLException {
+        SetTable();
+    }
+
     public void OpenEmployeeWindow() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employee.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -72,7 +81,27 @@ public class EmployeeStuffController {
         ResultSet resultSet = database.getEmployeeStuff();
         while (resultSet.next())
         {
+            lists.add(new Stuffuser(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("names"),
+                      resultSet.getInt("count"), resultSet.getString("data"), resultSet.getString("data_refund"), resultSet.getString("sname")));
 
         }
+        id.setCellValueFactory(new PropertyValueFactory<Stuffuser, Integer>("id"));
+        name.setCellValueFactory(new PropertyValueFactory<Stuffuser, String>("name_employee_id"));
+        pack.setCellValueFactory(new PropertyValueFactory<Stuffuser, String>("name_stuff_id"));
+        count.setCellValueFactory(new PropertyValueFactory<Stuffuser, Integer>("count"));
+        minus.setCellValueFactory(new PropertyValueFactory<Stuffuser, String>("data"));
+        plus.setCellValueFactory(new PropertyValueFactory<Stuffuser, String>("data_refund"));
+        status.setCellValueFactory(new PropertyValueFactory<Stuffuser, String>("name_status_id"));
+
+        table.setItems(lists);
+    }
+
+    public void OpenEmployeeStuffAddWindow() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("employee_stuff_add.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = (Stage)appand.getScene().getWindow();
+        stage.setTitle("ВВЕДИТЕ ДАННЫЕ!");
+        stage.setScene(scene);
+        stage.show();
     }
 }

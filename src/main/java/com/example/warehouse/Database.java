@@ -256,4 +256,25 @@ public class Database {
         }*/
         return resultSet;
     }
+
+    public ResultSet getEmployeeName() throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT employee.name FROM employee;");
+
+        ResultSet resultSet = stmt.executeQuery();
+        return resultSet;
+    }
+
+    public ResultSet getStuffName() throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT stuff.name FROM stuff;");
+
+        ResultSet resultSet = stmt.executeQuery();
+        return resultSet;
+    }
+
+    public ResultSet getStatusName() throws SQLException {
+        PreparedStatement stmt = dbConnection.prepareStatement("SELECT status.name FROM status;");
+
+        ResultSet resultSet = stmt.executeQuery();
+        return resultSet;
+    }
 }

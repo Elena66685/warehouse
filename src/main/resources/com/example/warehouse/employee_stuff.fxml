@@ -20,5 +20,6 @@
       </TableView>
       <Button fx:id="add" layoutX="26.0" layoutY="494.0" mnemonicParsing="false" onAction="#OpenEmployeeWindow" prefHeight="26.0" prefWidth="142.0" text=" Добавить сотрудника" />
       <Button fx:id="addstuff" layoutX="201.0" layoutY="495.0" mnemonicParsing="false" onAction="#OpenStuffWindow" prefHeight="26.0" prefWidth="123.0" text="Добавить вещь" />
+      <Button fx:id="appand" layoutX="414.0" layoutY="496.0" mnemonicParsing="false" onAction="#OpenEmployeeStuffAddWindow" prefHeight="26.0" prefWidth="135.0" text="Добавить запись" />
    </children>
 </AnchorPane>
