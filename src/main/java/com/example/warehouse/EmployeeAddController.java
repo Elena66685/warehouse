@@ -42,12 +42,22 @@ public class EmployeeAddController {
 
     public void sendData() throws SQLException, IOException {
         int index = department.getSelectionModel().getSelectedIndex() + 1;
-        database.singUpUser(name.getText(), data.getText(), index);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Сообщение");
-        alert.setContentText("Сотрудник успешно добавлен!");
-        alert.showAndWait();
-        OpenEmployeeWindow();
+        if(name.getText().equals("") || data.getText().equals("") || index == 0)
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Введите данные!");
+            alert.showAndWait();
+        }
+        else
+        {
+            database.singUpUser(name.getText(), data.getText(), index);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Сотрудник успешно добавлен!");
+            alert.showAndWait();
+            OpenEmployeeWindow();
+        }
     }
 
     public void OpenEmployeeWindow() throws IOException {

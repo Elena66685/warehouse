@@ -46,12 +46,21 @@ public class StuffAddController {
 
     public void setDBstuff() throws SQLException, IOException {
         int index = typy.getSelectionModel().getSelectedIndex() + 1;
-        database.singUpStuff(name.getText(), weight.getText(), Integer.valueOf(count.getText()), index);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Сообщение");
-        alert.setContentText("Вещь успешно добавлена!");
-        alert.showAndWait();
-        OpenStuffWindow();
+        if (index == 0 || name.getText().equals("") || weight.getText().equals("") || count.getText().equals(""))
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Введите данные!");
+            alert.showAndWait();
+        }
+        else {
+            database.singUpStuff(name.getText(), weight.getText(), Integer.valueOf(count.getText()), index);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Сообщение");
+            alert.setContentText("Вещь успешно добавлена!");
+            alert.showAndWait();
+            OpenStuffWindow();
+        }
     }
 
     public void OpenStuffWindow() throws IOException {

@@ -24,8 +24,8 @@ public class EmployeeStuffAddController {
     ObservableList<String> str = FXCollections.observableArrayList();
 
     int number = 0;
-    int index_stuff;
-    int num;
+    int index_stuff = 0;
+    int num = 0;
 
     @FXML
     private Button back;
@@ -95,24 +95,31 @@ public class EmployeeStuffAddController {
         {
             number = resultSet.getInt("number");
         }
-        if(number - Integer.valueOf(count.getText()) >= 0) {
-            database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), minus.getText(), plus.getText(), index_status);
-            num = number - Integer.valueOf(count.getText());
-            database.updateStuffNumber(index_stuff, num);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Сообщение");
-            alert.setContentText("Запись успешно добавлена!");
-            alert.showAndWait();
-            //num = number - Integer.valueOf(count.getText());
-            //database.updateStuffNumber(index_stuff, num);
-        }
-        else
+        if (index == 0 || index_stuff == 0 || index_status == 0 || count.getText().equals("") || minus.getText().equals(""))
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Сообщение");
-            alert.setContentText("Нет в наличии!");
+            alert.setContentText("Введите данные!");
             alert.showAndWait();
+        }
+        else {
+            if (number - Integer.valueOf(count.getText()) >= 0) {
+                database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), minus.getText(), plus.getText(), index_status);
+                num = number - Integer.valueOf(count.getText());
+                database.updateStuffNumber(index_stuff, num);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Сообщение");
+                alert.setContentText("Запись успешно добавлена!");
+                alert.showAndWait();
+                //num = number - Integer.valueOf(count.getText());
+                //database.updateStuffNumber(index_stuff, num);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Сообщение");
+                alert.setContentText("Нет в наличии!");
+                alert.showAndWait();
 
+            }
         }
         OpenEmployeeStuffWindow();
     }
