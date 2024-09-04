@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -15,5 +16,6 @@
       <TextField fx:id="plus" layoutX="37.0" layoutY="246.0" promptText="Вернули" />
       <Button fx:id="back" layoutX="36.0" layoutY="333.0" mnemonicParsing="false" onAction="#OpenEmployeeStuffWindow" text="Назад" />
       <Button fx:id="send" layoutX="399.0" layoutY="333.0" mnemonicParsing="false" onAction="#sendEmployeeStuffAdd" text="Отправить" />
+      <DatePicker fx:id="picer" layoutX="288.0" layoutY="187.0" promptText="Взяли" />
    </children>
 </AnchorPane>

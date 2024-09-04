@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +26,9 @@ public class EmployeeStuffAddController {
 
     @FXML
     private Button back;
+
+    @FXML
+    private DatePicker picer;
 
     @FXML
     private TextField count;
@@ -95,7 +95,7 @@ public class EmployeeStuffAddController {
         {
             number = resultSet.getInt("number");
         }
-        if (index == 0 || index_stuff == 0 || index_status == 0 || count.getText().equals("") || minus.getText().equals(""))
+        if (index == 0 || index_stuff == 0 || index_status == 0 || count.getText().equals("") || picer.getValue() == null)
         {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Сообщение");
@@ -104,7 +104,7 @@ public class EmployeeStuffAddController {
         }
         else {
             if (number - Integer.valueOf(count.getText()) >= 0) {
-                database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), minus.getText(), plus.getText(), index_status);
+                database.singUpEmployeeStuff(index, index_stuff, Integer.valueOf(count.getText()), String.valueOf(picer.getValue()), plus.getText(), index_status);
                 num = number - Integer.valueOf(count.getText());
                 database.updateStuffNumber(index_stuff, num);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
